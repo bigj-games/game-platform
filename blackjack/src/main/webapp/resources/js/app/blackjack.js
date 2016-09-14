@@ -3,9 +3,14 @@
  */
 
 require([
-    'dojo/domReady!'
+    "dojo/parser",
+    "dojo/domReady!"
 ], function (
-    
+    parser
 ) {
+    // set global variable
+    if (window.Bigj == null) {
+        window.Bigj = {}
+    }
     console.log("Blackjack applicaton started!");
 });
