@@ -5,11 +5,15 @@
 define([
     "dojo/_base/declare",
     "dojo/dom-construct",
-    "dijit/_WidgetBase"
+    "dijit/_WidgetBase",
+    "bigj/widget/CommandOutput",
+    "bigj/widget/CommandInput"
 ], function (
     declare,
     domConstruct,
-    _WidgetBase
+    _WidgetBase,
+    CommandOutput,
+    CommandInput
 ) {
     return declare([_WidgetBase], {
         
@@ -17,6 +21,11 @@ define([
             this.domNode = domConstruct.create("div", {
                 innerHTML: "BlackJack Application"
             });
+        },
+        
+        postCreate: function () {
+            new CommandOutput().placeAt(this.domNode);
+            new CommandInput().placeAt(this.domNode);
         }
     });
 });
