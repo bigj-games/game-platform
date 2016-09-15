@@ -4,13 +4,24 @@
 
 require([
     "dojo/parser",
+    "bigj/util/logger",
+    "bigj/serviceRegistry",
+    "bigj/service/CommandTerminalService",
     "dojo/domReady!"
 ], function (
-    parser
+    parser,
+    logger,
+    ServiceRegistry,
+    CommandTerminalService
 ) {
     // set global variable
     if (window.Bigj == null) {
         window.Bigj = {}
     }
-    console.log("Blackjack applicaton started!");
+    logger.log("Blackjack applicaton started!");
+    
+    let serviceRegistry = new ServiceRegistry({
+        globalVar: "Bigj"
+    });
+    serviceRegistry.register(CommandTerminalService);
 });

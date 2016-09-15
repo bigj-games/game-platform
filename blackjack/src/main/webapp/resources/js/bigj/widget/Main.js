@@ -6,14 +6,12 @@ define([
     "dojo/_base/declare",
     "dojo/dom-construct",
     "dijit/_WidgetBase",
-    "bigj/widget/CommandOutput",
-    "bigj/widget/CommandInput"
+    "bigj/widget/GameTerminal"
 ], function (
     declare,
     domConstruct,
     _WidgetBase,
-    CommandOutput,
-    CommandInput
+    GameTerminal
 ) {
     return declare([_WidgetBase], {
         
@@ -21,11 +19,11 @@ define([
             this.domNode = domConstruct.create("div", {
                 innerHTML: "BlackJack Application"
             });
+            new GameTerminal().placeAt(this.domNode);
         },
         
         postCreate: function () {
-            new CommandOutput().placeAt(this.domNode);
-            new CommandInput().placeAt(this.domNode);
+            
         }
     });
 });
