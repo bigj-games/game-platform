@@ -23,4 +23,10 @@ public class PageController {
 
         return "index";
     }
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String showLogin (ModelMap model) {
+		return "login";
+	}
+
 }
