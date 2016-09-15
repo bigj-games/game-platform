@@ -46,9 +46,8 @@ define([
             // executing commands
             if (value == "clean") {
                 this.commands = [];
-            } else {
-                this.renderCommands(this.commands);
             }
+            this.renderCommands(this.commands);
         },
 
         renderCommands: function (commands) {
