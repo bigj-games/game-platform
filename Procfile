@@ -1,0 +1,1 @@
+web:    java $JAVA_OPTS -jar blackjack/target/dependency/webapp-runner.jar --port $PORT --path /blackjack blackjack/target/blackjack.war
