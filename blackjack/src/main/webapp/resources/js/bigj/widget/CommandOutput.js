@@ -43,16 +43,25 @@ define([
             }
             this.commands.push(value);
 
-            this.renderCommands(this.commands);
+            // executing commands
+            if (value == "clean") {
+                this.commands = [];
+            } else {
+                this.renderCommands(this.commands);
+            }
         },
 
         renderCommands: function (commands) {
-            domConstruct.empty(this.domNode);
+            this.cleanTerminal();
             for (var c of commands) {
                 domConstruct.create("div", {
-                    innerHTML: `#> ${c}`
+                    innerHTML: c
                 }, this.domNode);
             }
+        },
+
+        cleanTerminal: function () {
+            domConstruct.empty(this.domNode);
         }
     });
 });

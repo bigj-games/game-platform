@@ -16,16 +16,21 @@ body {
 .command-input {
     background-color: #333;
     margin: auto;
-    width: 610px;
+    width: 600px;
     height: 30px;
-    padding: 5px;
+    padding: 5px 10px;
 }
 .command-input input[type="text"] {
-    height: 30px;
-    width: 610px;
+    width: 550px;
     border: none;
     padding: 0 5px;
-    background-color: #dcffd1;
+    background-color: #333;
+    color: #8adb30;
+    font-size: 1.2em;
+    font-family: "Courier New", "monospace";
+}
+.command-input .command-prompt {
+    color: #8adb30;
     font-size: 1.2em;
     font-family: "Courier New", "monospace";
 }
