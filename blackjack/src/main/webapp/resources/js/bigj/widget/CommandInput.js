@@ -7,6 +7,7 @@ define([
     "dojo/dom-construct",
     "dojo/on",
     "dojo/topic",
+    "dojo/keys",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "bigj/util/logger",
@@ -17,6 +18,7 @@ define([
     domConstruct,
     on,
     topic,
+    keys,
     _WidgetBase,
     _TemplatedMixin,
     logger,
@@ -29,7 +31,7 @@ define([
 
         postCreate: function () {
             on(this.textInput, "keyup", (e) => {
-                if (e.keyCode == 13 /* Enter */ && this.textInput.value /* Not empty input */) {
+                if (e.keyCode == keys.ENTER /* Enter */ && this.textInput.value /* Not empty input */) {
                     let inputValue = this.textInput.value;
                     topic.publish(topics.TERMINAL_INPUT, {value: inputValue});
                     this.textInput.value = null;

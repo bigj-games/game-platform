@@ -2,7 +2,7 @@ package org.bigj.blackjack.web.controller;
 
 import org.bigj.blackjack.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +16,7 @@ public class MessageController {
     @Autowired
     MessageService messageService;
 
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "User") String name) {
         return messageService.getMessage(name);
     }
