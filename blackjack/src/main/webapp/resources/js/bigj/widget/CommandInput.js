@@ -1,6 +1,6 @@
 /**
-    * Created by arthan on 14.09.2016. | Project game-platform
-    */
+ * Created by arthan on 14.09.2016. | Project game-platform
+ */
 
 define([
     "dojo/_base/declare",

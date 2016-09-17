@@ -1,5 +1,5 @@
 /**
- * Created by ashamsiev on 15.09.2016.
+ * Created by ashamsiev on 15.09.2016. | Project game-platform
  */
 
 define([

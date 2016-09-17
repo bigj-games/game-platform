@@ -14,8 +14,11 @@ body {
   height: 210px;
   padding: 6px 10px;
   color: #8adb30;
-  font-family: "Courier New", "monospace";
   font-size: 1.2em;
+  font-family: "Courier New", "monospace";
+}
+.command-output div.error-text {
+  color: #ff3b1b;
 }
 .command-input {
   background-color: #333333;

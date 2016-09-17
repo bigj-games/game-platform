@@ -28,7 +28,7 @@ define([
         templateString: template,
 
         constructor: function () {
-            this.commands = [];
+            this.lines = [];
             this.setUpSubscriptions();
         },
 
@@ -41,28 +41,29 @@ define([
             var command = payload.command;
             this.addLine(command);
             this.addLine(payload.response);
-            this.renderCommands();
+            this.renderLines();
         },
 
         addLine: function (command) {
-            if (this.commands.length == this.MAX_LINES) {
-                this.commands.shift();
+            if (this.lines.length == this.MAX_LINES) {
+                this.lines.shift();
             }
-            this.commands.push(command);
+            this.lines.push(command);
         },
 
-        renderCommands: function () {
+        renderLines: function () {
             domConstruct.empty(this.domNode);
-            for (var c of this.commands) {
+            for (var c of this.lines) {
                 domConstruct.create("div", {
-                    innerHTML: c
+                    "class": c.status == "error" ? "error-text" : "",
+                    innerHTML: c.value || c
                 }, this.domNode);
             }
         },
 
         cleanTerminal: function () {
-            this.commands.length = 0;
-            this.renderCommands();
+            this.lines.length = 0;
+            this.renderLines();
         }
     });
 });

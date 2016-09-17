@@ -1,6 +1,9 @@
 package org.bigj.blackjack.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 /**
  * Created by arthan on 08.09.2016. Project game-platform
@@ -22,5 +25,10 @@ public class BlackjackInitializer extends AbstractAnnotationConfigDispatcherServ
         return new String[]{"/"};
     }
 
-
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        return new Filter[] { characterEncodingFilter};
+    }
 }

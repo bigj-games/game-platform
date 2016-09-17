@@ -10,15 +10,18 @@ body {
 }
 
 @terminal-back-color: #333;
+@terminal-text-error-color: #ff3b1b;
+@terminal-text-color: #8adb30;
 .command-output {
     background-color: @terminal-back-color;
     margin: auto;
     width: 600px;
     height: 210px;
     padding: 6px 10px;
-    color: #8adb30;
-    font-family: "Courier New", "monospace";
-    font-size: 1.2em;
+    #terminal-text;
+}
+.command-output div.error-text {
+    color: @terminal-text-error-color;
 }
 
 .command-input {
@@ -30,7 +33,7 @@ body {
 }
 
 #terminal-text() {
-    color: #8adb30;
+    color: @terminal-text-color;
     font-size: 1.2em;
     font-family: "Courier New", "monospace";
 }
@@ -44,7 +47,4 @@ body {
 }
 .command-input .command-prompt {
     #terminal-text;
-}
-.command-input input[type="text"]:hover {
-
 }

@@ -5,11 +5,13 @@
 define([
     "dojo/_base/declare",
     "dojo/topic",
+    "dojo/request",
     "bigj/topics",
     "bigj/util/logger"
 ], function (
     declare,
     topic,
+    request,
     topics,
     logger
 ) {
@@ -26,9 +28,23 @@ define([
                 topic.publish(topics.TERMINAL_CLEAN, {});
             } else {
                 
-                //Send request to the server here
-
-                topic.publish(topics.TERMINAL_PRINT, {command: command, response: "Unknown command"});
+                request.post("/blackjack/game/command", {
+                    data: {
+                        command: command
+                    },
+                    timeout: 5000,
+                    handleAs: "json"
+                }).then(res => {
+                    topic.publish(topics.TERMINAL_PRINT, {
+                        command: command, 
+                        response: {
+                            value: res.response,
+                            status: res.status
+                        }
+                    });
+                }, res => {
+                    logger.error(res);
+                });
             }
         }
     });
