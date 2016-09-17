@@ -8,8 +8,9 @@ define([
     
 ) {
     let topics = {
-        TERMINAL_INPUT: "BJ_GAME_TERMINAL_INPUT",
-        TERMINAL_OUTPUT: "BJ_GAME_TERMINAL_OUTPUT"
+        TERMINAL_INPUT: "BLACK_JACK_GAME_TERMINAL_INPUT",
+        TERMINAL_PRINT: "BLACK_JACK_GAME_TERMINAL_OUTPUT",
+        TERMINAL_CLEAN: "BLACK_JACK_GAME_TERMINAL_CLEAN"
     };
     Object.freeze(topics);
     

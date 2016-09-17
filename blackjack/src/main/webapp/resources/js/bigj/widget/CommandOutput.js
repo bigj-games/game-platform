@@ -1,5 +1,5 @@
 /**
- * Created by arthan on 14.09.2016.
+ * Created by arthan on 14.09.2016. | Project game-platform
  */
 
 define([
@@ -29,30 +29,31 @@ define([
 
         constructor: function () {
             this.commands = [];
-            topic.subscribe(topics.TERMINAL_OUTPUT, this.onTerminalOutput.bind(this))
+            this.setUpSubscriptions();
         },
 
-        postCreate: function () {
-            
+        setUpSubscriptions: function () {
+            topic.subscribe(topics.TERMINAL_PRINT, this.onTerminalPrint.bind(this));
+            topic.subscribe(topics.TERMINAL_CLEAN, this.cleanTerminal.bind(this));
         },
 
-        onTerminalOutput: function (payload) {
-            value = payload.value;
+        onTerminalPrint: function (payload) {
+            var command = payload.command;
+            this.addLine(command);
+            this.addLine(payload.response);
+            this.renderCommands();
+        },
+
+        addLine: function (command) {
             if (this.commands.length == this.MAX_LINES) {
                 this.commands.shift();
             }
-            this.commands.push(value);
-
-            // executing commands
-            if (value == "clean") {
-                this.commands = [];
-            }
-            this.renderCommands(this.commands);
+            this.commands.push(command);
         },
 
-        renderCommands: function (commands) {
-            this.cleanTerminal();
-            for (var c of commands) {
+        renderCommands: function () {
+            domConstruct.empty(this.domNode);
+            for (var c of this.commands) {
                 domConstruct.create("div", {
                     innerHTML: c
                 }, this.domNode);
@@ -60,7 +61,8 @@ define([
         },
 
         cleanTerminal: function () {
-            domConstruct.empty(this.domNode);
+            this.commands.length = 0;
+            this.renderCommands();
         }
     });
 });

@@ -1,6 +1,6 @@
 /**
- * Created by arthan on 14.09.2016.
- */
+    * Created by arthan on 14.09.2016. | Project game-platform
+    */
 
 define([
     "dojo/_base/declare",
@@ -31,7 +31,7 @@ define([
 
         postCreate: function () {
             on(this.textInput, "keyup", (e) => {
-                if (e.keyCode == keys.ENTER /* Enter */ && this.textInput.value /* Not empty input */) {
+                if (e.keyCode == keys.ENTER && this.textInput.value /* Not empty input */) {
                     let inputValue = this.textInput.value;
                     topic.publish(topics.TERMINAL_INPUT, {value: inputValue});
                     this.textInput.value = null;

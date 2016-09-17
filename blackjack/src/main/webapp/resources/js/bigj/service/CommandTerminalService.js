@@ -1,6 +1,6 @@
-/**
- * Created by ashamsiev on 15.09.2016.
- */
+    /**
+    * Created by ashamsiev on 15.09.2016. | Project game-platform
+    */
 
 define([
     "dojo/_base/declare",
@@ -20,11 +20,16 @@ define([
         },
 
         onCommandInput: function (payload) {
-            var value = payload.value;
+            var command = payload.value;
             
-            //Send request to the server here
-            
-            topic.publish(topics.TERMINAL_OUTPUT, {value: value});
+            if (command == "clean") {
+                topic.publish(topics.TERMINAL_CLEAN, {});
+            } else {
+                
+                //Send request to the server here
+
+                topic.publish(topics.TERMINAL_PRINT, {command: command, response: "Unknown command"});
+            }
         }
     });
 });
