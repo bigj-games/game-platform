@@ -1,39 +1,41 @@
 body {
-    background-color: #556;
+  background-color: #556;
 }
-
+.page-header {
+  height: 100px;
+  background-color: transparent;
+  border: 2px solid #999999;
+  margin-bottom: 10px;
+}
 .command-output {
-    background-color: #333;
-    margin: auto;
-    width: 600px;
-    height: 210px;
-    padding: 6px 10px;
-    color: #8adb30;
-    font-family: "Courier New", "monospace";
-    font-size: 1.2em;
+  background-color: #333333;
+  margin: auto;
+  width: 600px;
+  height: 210px;
+  padding: 6px 10px;
+  color: #8adb30;
+  font-family: "Courier New", "monospace";
+  font-size: 1.2em;
 }
-
 .command-input {
-    background-color: #333;
-    margin: auto;
-    width: 600px;
-    height: 30px;
-    padding: 5px 10px;
+  background-color: #333333;
+  margin: auto;
+  width: 600px;
+  height: 30px;
+  padding: 5px 10px;
 }
 .command-input input[type="text"] {
-    width: 550px;
-    border: none;
-    padding: 0 5px;
-    background-color: #333;
-    color: #8adb30;
-    font-size: 1.2em;
-    font-family: "Courier New", "monospace";
+  background-color: #333333;
+  width: 550px;
+  border: none;
+  padding: 0 5px;
+  color: #8adb30;
+  font-size: 1.2em;
+  font-family: "Courier New", "monospace";
 }
 .command-input .command-prompt {
-    color: #8adb30;
-    font-size: 1.2em;
-    font-family: "Courier New", "monospace";
+  color: #8adb30;
+  font-size: 1.2em;
+  font-family: "Courier New", "monospace";
 }
-.command-input input[type="text"]:hover {
 
-}

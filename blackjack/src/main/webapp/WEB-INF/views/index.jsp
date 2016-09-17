@@ -14,6 +14,7 @@
     <spring:url value="/webjars/dojo/1.10.4/dojo/dojo.js" var="dojo" />
     <spring:url value="/resources/js/app/blackjack.js" var="blackjackApp" />
     <spring:url value="/resources/css/blackjack.css" var="style" />
+    <spring:url value="/resources/css/blackjack-2.css" var="style2" />
     <script>
         var dojoConfig = {
             isDebug: true,
@@ -28,9 +29,9 @@
     <script data-dojo-config="async: true, parseOnLoad: true" src="${dojo}"></script>
     <script src="${blackjackApp}"></script>
     <link rel="stylesheet" href="${style}">
+    <link rel="stylesheet" href="${style2}">
 </head>
 <body>
-    <h3>Greeting, blackjack player ${username}</h3>
     <div id="mainLayout"
          data-dojo-type="bigj/widget/Main">
     </div>
