@@ -25,9 +25,9 @@ define([
             var command = payload.value;
             
             if (command == "clean") {
-                topic.publish(topics.TERMINAL_CLEAN, {});
+                topic.publish(topics.TERMINAL_CLEAN);
             } else {
-                
+                topic.publish(topics.TERMINAL_BLOCK);
                 request.post("/blackjack/game/command", {
                     data: {
                         command: command
@@ -35,6 +35,7 @@ define([
                     timeout: 5000,
                     handleAs: "json"
                 }).then(res => {
+                    topic.publish(topics.TERMINAL_UNBLOCK);
                     topic.publish(topics.TERMINAL_PRINT, {
                         command: command, 
                         response: {
@@ -43,6 +44,7 @@ define([
                         }
                     });
                 }, res => {
+                    topic.publish(topics.TERMINAL_UNBLOCK);
                     logger.error(res);
                 });
             }

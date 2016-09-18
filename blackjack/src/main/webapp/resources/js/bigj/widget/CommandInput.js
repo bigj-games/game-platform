@@ -5,6 +5,7 @@
 define([
     "dojo/_base/declare",
     "dojo/dom-construct",
+    "dojo/dom-attr",
     "dojo/on",
     "dojo/topic",
     "dojo/keys",
@@ -16,6 +17,7 @@ define([
 ], function (
     declare,
     domConstruct,
+    domAttr,
     on,
     topic,
     keys,
@@ -29,14 +31,34 @@ define([
         
         templateString: template,
 
+        constructor: function () {
+            this.setUpSubscriptions();
+        },
+
+        setUpSubscriptions: function () {
+            topic.subscribe(topics.TERMINAL_BLOCK, (payload) => {
+                domAttr.set(this.textInput, "readonly", true);
+            });
+            topic.subscribe(topics.TERMINAL_UNBLOCK, (payload) => {
+                domAttr.remove(this.textInput, "readonly");
+            });
+        },
+
         postCreate: function () {
-            on(this.textInput, "keyup", (e) => {
-                if (e.keyCode == keys.ENTER && this.textInput.value /* Not empty input */) {
+            this.keyupHandler = on(this.textInput, "keyup", (e) => {
+                if (e.keyCode == keys.ENTER &&
+                    this.textInput.value /* Not empty input */
+                ) {
                     let inputValue = this.textInput.value;
                     topic.publish(topics.TERMINAL_INPUT, {value: inputValue});
                     this.textInput.value = null;
                 }
             });
+        },
+
+        destroy: function () {
+            this.inherited(arguments);
+            this.keyupHandler && this.keyupHandler.remove();
         }
 
 

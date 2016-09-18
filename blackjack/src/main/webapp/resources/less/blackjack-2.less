@@ -9,15 +9,39 @@ body {
     margin-bottom: 10px;
 }
 
+@terminal-width: 600px;
+@terminal-padding: 10px;
+.game-terminal {
+    width: @terminal-width + 2*@terminal-padding;
+    margin: auto;
+    position: relative;
+}
+.terminal-overlay {
+    background-color: rgba(160, 209, 218, 0.14);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+@overlay-image-width: 60px;
+.overlay-image {
+    position: absolute;
+    width: @overlay-image-width;
+    height: @overlay-image-width;
+    top: 100px;
+    left: @terminal-width/2 - @overlay-image-width/2;
+}
+
 @terminal-back-color: #333;
 @terminal-text-error-color: #ff3b1b;
 @terminal-text-color: #8adb30;
 .command-output {
     background-color: @terminal-back-color;
-    margin: auto;
-    width: 600px;
+    width: @terminal-width;
     height: 210px;
-    padding: 6px 10px;
+    padding: 6px @terminal-padding;
     #terminal-text;
 }
 .command-output div.error-text {
@@ -26,10 +50,9 @@ body {
 
 .command-input {
     background-color: @terminal-back-color;
-    margin: auto;
-    width: 600px;
+    width: @terminal-width;
     height: 30px;
-    padding: 5px 10px;
+    padding: 5px @terminal-padding;
 }
 
 #terminal-text() {
