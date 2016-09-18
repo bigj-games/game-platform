@@ -9,65 +9,69 @@ body {
     margin-bottom: 10px;
 }
 
-@terminal-width: 600px;
-@terminal-padding: 10px;
 .game-terminal {
+    @terminal-width: 600px;
+    @terminal-padding: 10px;
     width: @terminal-width + 2*@terminal-padding;
     margin: auto;
     position: relative;
-}
-.terminal-overlay {
-    background-color: rgba(160, 209, 218, 0.14);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
 
-@overlay-image-width: 60px;
-.overlay-image {
-    position: absolute;
-    width: @overlay-image-width;
-    height: @overlay-image-width;
-    top: 100px;
-    left: @terminal-width/2 - @overlay-image-width/2;
-}
+    .terminal-overlay {
+        @terminal-overlay-color: rgba(160, 209, 218, 0.14);
+        background-color: @terminal-overlay-color;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
 
-@terminal-back-color: #333;
-@terminal-text-error-color: #ff3b1b;
-@terminal-text-color: #8adb30;
-.command-output {
-    background-color: @terminal-back-color;
-    width: @terminal-width;
-    height: 210px;
-    padding: 6px @terminal-padding;
-    #terminal-text;
-}
-.command-output div.error-text {
-    color: @terminal-text-error-color;
-}
+    .overlay-image {
+        @overlay-image-width: 60px;
+        position: absolute;
+        width: @overlay-image-width;
+        height: @overlay-image-width;
+        top: 100px;
+        left: @terminal-width/2 - @overlay-image-width/2;
+    }
 
-.command-input {
-    background-color: @terminal-back-color;
-    width: @terminal-width;
-    height: 30px;
-    padding: 5px @terminal-padding;
-}
+    #terminal-text() {
+        @terminal-text-color: #8adb30;
+        color: @terminal-text-color;
+        font-size: 1.2em;
+        font-family: "Courier New", "monospace";
+    }
 
-#terminal-text() {
-    color: @terminal-text-color;
-    font-size: 1.2em;
-    font-family: "Courier New", "monospace";
-}
+    @terminal-back-color: #333;
+    @terminal-text-error-color: #ff3b1b;
+    .command-output {
+        background-color: @terminal-back-color;
+        width: @terminal-width;
+        height: 210px;
+        padding: 6px @terminal-padding;
+        #terminal-text;
 
-.command-input input[type="text"] {
-    background-color: @terminal-back-color;
-    width: 550px;
-    border: none;
-    padding: 0 5px;
-    #terminal-text;
-}
-.command-input .command-prompt {
-    #terminal-text;
+        div.error-text {
+            color: @terminal-text-error-color;
+        }
+    }
+
+    .command-input {
+        background-color: @terminal-back-color;
+        width: @terminal-width;
+        height: 30px;
+        padding: 5px @terminal-padding;
+
+        input[type="text"] {
+            background-color: @terminal-back-color;
+            width: 550px;
+            border: none;
+            padding: 0 5px;
+            #terminal-text;
+        }
+
+        .command-prompt {
+            #terminal-text;
+        }
+    }
 }

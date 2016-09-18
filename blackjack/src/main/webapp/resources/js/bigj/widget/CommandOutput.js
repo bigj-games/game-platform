@@ -39,16 +39,19 @@ define([
 
         onTerminalPrint: function (payload) {
             var command = payload.command;
-            this.addLine(command);
-            this.addLine(payload.response);
+            this.addOutput(command);
+            this.addOutput(payload.response.value, payload.response.status);
             this.renderLines();
         },
 
-        addLine: function (command) {
-            if (this.lines.length == this.MAX_LINES) {
-                this.lines.shift();
+        addOutput: function (command, type = "info") {
+            var output = command.value || command;
+            for (var line of output.split("\n")) {
+                if (this.lines.length == this.MAX_LINES) {
+                    this.lines.shift();
+                }
+                this.lines.push({value: line, status: type});
             }
-            this.lines.push(command);
         },
 
         renderLines: function () {
@@ -56,7 +59,7 @@ define([
             for (var c of this.lines) {
                 domConstruct.create("div", {
                     "class": c.status == "error" ? "error-text" : "",
-                    innerHTML: c.value || c
+                    innerHTML: c.value
                 }, this.domNode);
             }
         },

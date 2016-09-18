@@ -12,16 +12,31 @@ import java.text.MessageFormat;
 @Service
 public class GameService {
 
-    final private static String[] allowedCommands = {"start", "stop", "hitme"};
+    final private static String[] allowedCommands = {"start", "stop", "hitme", "help"};
     final private static String defaultTemplate = "Command {0} received";
-    final private static String unknownCommandTemplate = "{0}: unknown command";
+    final private static String helpMessage =
+            "Allowed terminal commands:\n" +
+            "start - starts game\n" +
+            "stop - stops game\n" +
+            "hitme - one more card\n" +
+            "help - display this message";
 
     public String play(String command) {
-
         if (!isLegalCommand(command)) {
-            throw new IllegalCommandException(MessageFormat.format(unknownCommandTemplate, command));
+            throw new IllegalCommandException(command);
         }
-        return MessageFormat.format(defaultTemplate, command);
+
+        String response;
+        switch (command) {
+            case "help":
+                response = helpMessage;
+                break;
+            default:
+                response = MessageFormat.format(defaultTemplate, command);
+                break;
+        }
+
+        return response;
     }
 
     private boolean isLegalCommand(String command) {
