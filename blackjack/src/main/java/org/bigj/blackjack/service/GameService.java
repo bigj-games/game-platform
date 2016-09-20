@@ -25,11 +25,14 @@ public class GameService {
         if (!isLegalCommand(command)) {
             throw new IllegalCommandException(command);
         }
-
         String response;
+        Game game = new Game();
         switch (command) {
             case "help":
                 response = helpMessage;
+                break;
+            case "start":
+                response = game.start();
                 break;
             default:
                 response = MessageFormat.format(defaultTemplate, command);
