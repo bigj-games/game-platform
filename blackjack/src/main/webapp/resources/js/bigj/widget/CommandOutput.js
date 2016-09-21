@@ -23,7 +23,7 @@ define([
 ) {
     return declare([_WidgetBase, _TemplatedMixin], {
 
-        MAX_LINES: 10,
+        MAX_LINES: 12,
         
         templateString: template,
 

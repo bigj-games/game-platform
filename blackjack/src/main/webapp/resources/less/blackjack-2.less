@@ -10,7 +10,7 @@ body {
 }
 
 .game-terminal {
-    @terminal-width: 600px;
+    @terminal-width: 700px;
     @terminal-padding: 10px;
     width: @terminal-width + 2*@terminal-padding;
     margin: auto;
@@ -47,7 +47,7 @@ body {
     .command-output {
         background-color: @terminal-back-color;
         width: @terminal-width;
-        height: 210px;
+        height: 241px;
         padding: 6px @terminal-padding;
         #terminal-text;
 
@@ -64,7 +64,7 @@ body {
 
         input[type="text"] {
             background-color: @terminal-back-color;
-            width: 550px;
+            width: @terminal-width - 50;
             border: none;
             padding: 0 5px;
             #terminal-text;

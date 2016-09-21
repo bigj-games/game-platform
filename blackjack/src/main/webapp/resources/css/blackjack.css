@@ -8,11 +8,11 @@ body {
   margin-bottom: 10px;
 }
 .game-terminal {
-  width: 620px;
+  width: 720px;
   margin: auto;
   position: relative;
 }
-.terminal-overlay {
+.game-terminal .terminal-overlay {
   background-color: rgba(160, 209, 218, 0.14);
   position: absolute;
   width: 100%;
@@ -20,41 +20,41 @@ body {
   top: 0;
   left: 0;
 }
-.overlay-image {
+.game-terminal .overlay-image {
   position: absolute;
   width: 60px;
   height: 60px;
   top: 100px;
-  left: 270px;
+  left: 320px;
 }
-.command-output {
+.game-terminal .command-output {
   background-color: #333333;
-  width: 600px;
-  height: 210px;
+  width: 700px;
+  height: 241px;
   padding: 6px 10px;
   color: #8adb30;
   font-size: 1.2em;
   font-family: "Courier New", "monospace";
 }
-.command-output div.error-text {
+.game-terminal .command-output div.error-text {
   color: #ff3b1b;
 }
-.command-input {
+.game-terminal .command-input {
   background-color: #333333;
-  width: 600px;
+  width: 700px;
   height: 30px;
   padding: 5px 10px;
 }
-.command-input input[type="text"] {
+.game-terminal .command-input input[type="text"] {
   background-color: #333333;
-  width: 550px;
+  width: 650px;
   border: none;
   padding: 0 5px;
   color: #8adb30;
   font-size: 1.2em;
   font-family: "Courier New", "monospace";
 }
-.command-input .command-prompt {
+.game-terminal .command-input .command-prompt {
   color: #8adb30;
   font-size: 1.2em;
   font-family: "Courier New", "monospace";
