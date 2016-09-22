@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 
 @EnableWebSecurity
-public class BlackjackSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class BlackjackSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -21,8 +21,8 @@ public class BlackjackSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/**").access("hasRole('USER')")
-            .and().formLogin()
+            .anyRequest().authenticated()
+            .and().formLogin().loginPage("/login").permitAll()
             .and().csrf().disable()
         ;
     }
