@@ -1,5 +1,5 @@
 /**
- * Created by arthan on 13.09.2016.
+ * Created by arthan on 13.09.2016. | Project game-platform
  */
 
 require([
@@ -18,6 +18,7 @@ require([
     if (window.Bigj == null) {
         window.Bigj = {}
     }
+    Bigj.CONTEXT_PATH = window.java_app_bj_context;
     logger.log("Blackjack applicaton started!");
     
     let serviceRegistry = new ServiceRegistry({

@@ -25,6 +25,8 @@
                 }
             ]
         };
+        // perhaps there is no better way
+        var java_app_bj_context = "${pageContext.request.contextPath}";
     </script>
     <script data-dojo-config="async: true, parseOnLoad: true" src="${dojo}"></script>
     <script src="${blackjackApp}"></script>

@@ -7,12 +7,14 @@ define([
     "dojo/topic",
     "dojo/request",
     "bigj/topics",
+    "bigj/constants",
     "bigj/util/logger"
 ], function (
     declare,
     topic,
     request,
     topics,
+    constants,
     logger
 ) {
     return declare([], {
@@ -28,7 +30,7 @@ define([
                 topic.publish(topics.TERMINAL_CLEAN);
             } else {
                 topic.publish(topics.TERMINAL_BLOCK);
-                request.post("/blackjack/game/command", {
+                request.post(constants.get().context + "/game/command", {
                     data: {
                         command: command
                     },
