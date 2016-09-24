@@ -25,6 +25,10 @@ public class BlackjackSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and().formLogin().loginPage("/login").permitAll()
             .and().csrf().disable()
+            .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
         ;
     }
 }

@@ -2,10 +2,20 @@ body {
   background-color: #556;
 }
 .page-header {
-  height: 100px;
+  height: 40px;
   background-color: transparent;
   border: 2px solid #999999;
   margin-bottom: 10px;
+}
+.page-header #logout-button {
+  float: right;
+  background-image: url("../image/logout.png");
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin-top: 4px;
+  margin-right: 4px;
+  cursor: pointer;
 }
 .game-terminal {
   width: 720px;
