@@ -5,10 +5,15 @@ package org.bigj.blackjack.service;
  */
 public class Game  {
 
-	public Game() { }
+	private GameState gameState;
+
+	public Game() {
+		gameState = new GameState();
+	}
 
 	public String start() {
-        return "Game has started!";
+		gameState.start();
+        return gameState.start();
 	}
 
 
