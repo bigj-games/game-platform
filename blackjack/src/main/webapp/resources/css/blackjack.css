@@ -1,11 +1,10 @@
 body {
   background-color: #556;
+  margin: auto;
 }
 .page-header {
   height: 40px;
-  background-color: transparent;
-  border: 2px solid #999999;
-  margin-bottom: 10px;
+  background-color: #999999;
 }
 .page-header #logout-button {
   float: right;

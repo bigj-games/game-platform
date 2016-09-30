@@ -1,88 +1,87 @@
 body {
-    background-color: #556;
+  background-color: #556;
+  margin: auto;
 }
 
 .page-header {
-    height: 40px;
-    background-color: transparent;
-    border: 2px solid #999999;
-    margin-bottom: 10px;
+  height: 40px;
+  background-color: #999999;
 
-    #logout-button {
-        float: right;
-        background-image: url("../image/logout.png");
-        display: inline-block;
-        height: 32px;
-        width: 32px;
-        margin-top: 4px;
-        margin-right: 4px;
-        cursor: pointer;
-    }
+  #logout-button {
+    float: right;
+    background-image: url("../image/logout.png");
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin-top: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+  }
 }
 
 .game-terminal {
-    @terminal-width: 700px;
-    @terminal-padding: 10px;
-    width: @terminal-width + 2*@terminal-padding;
-    margin: auto;
-    position: relative;
+  @terminal-width: 700px;
+  @terminal-padding: 10px;
+  width: @terminal-width + 2*@terminal-padding;
+  margin: auto;
+  position: relative;
 
-    .terminal-overlay {
-        @terminal-overlay-color: rgba(160, 209, 218, 0.14);
-        background-color: @terminal-overlay-color;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
+  .terminal-overlay {
+    @terminal-overlay-color: rgba(160, 209, 218, 0.14);
+    background-color: @terminal-overlay-color;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .overlay-image {
+    @overlay-image-width: 60px;
+    position: absolute;
+    width: @overlay-image-width;
+    height: @overlay-image-width;
+    top: 100px;
+    left: @terminal-width/2 - @overlay-image-width/2;
+  }
+
+  #terminal-text() {
+    @terminal-text-color: #8adb30;
+    color: @terminal-text-color;
+    font-size: 1.2em;
+    font-family: "Courier New", "monospace";
+  }
+
+  @terminal-back-color: #333;
+  @terminal-text-error-color: #ff3b1b;
+  .command-output {
+    background-color: @terminal-back-color;
+    width: @terminal-width;
+    height: 241px;
+    padding: 6px @terminal-padding;
+    #terminal-text;
+
+    div.error-text {
+      color: @terminal-text-error-color;
+    }
+  }
+
+  .command-input {
+    background-color: @terminal-back-color;
+    width: @terminal-width;
+    height: 30px;
+    padding: 5px @terminal-padding;
+
+    input[type="text"] {
+      background-color: @terminal-back-color;
+      width: @terminal-width - 50;
+      border: none;
+      padding: 0 5px;
+      #terminal-text;
     }
 
-    .overlay-image {
-        @overlay-image-width: 60px;
-        position: absolute;
-        width: @overlay-image-width;
-        height: @overlay-image-width;
-        top: 100px;
-        left: @terminal-width/2 - @overlay-image-width/2;
+    .command-prompt {
+      #terminal-text;
     }
-
-    #terminal-text() {
-        @terminal-text-color: #8adb30;
-        color: @terminal-text-color;
-        font-size: 1.2em;
-        font-family: "Courier New", "monospace";
-    }
-
-    @terminal-back-color: #333;
-    @terminal-text-error-color: #ff3b1b;
-    .command-output {
-        background-color: @terminal-back-color;
-        width: @terminal-width;
-        height: 241px;
-        padding: 6px @terminal-padding;
-        #terminal-text;
-
-        div.error-text {
-            color: @terminal-text-error-color;
-        }
-    }
-
-    .command-input {
-        background-color: @terminal-back-color;
-        width: @terminal-width;
-        height: 30px;
-        padding: 5px @terminal-padding;
-
-        input[type="text"] {
-            background-color: @terminal-back-color;
-            width: @terminal-width - 50;
-            border: none;
-            padding: 0 5px;
-            #terminal-text;
-        }
-
-        .command-prompt {
-            #terminal-text;
-        }
-    }
+  }
 }
