@@ -19,6 +19,12 @@
             <artifactId>dojo</artifactId>
             <version>1.10.4</version>
         </dependency>
+
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.4.1211</version>
+      </dependency>
     </dependencies>
 
     <build>

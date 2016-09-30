@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 /**
  * Created by arthan on 21.09.2016. | Project game-platform
  */
@@ -14,8 +16,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class BlackjackSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private DataSource dataSource;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user1").password("user").roles("USER");
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select username, authority from authorities where username=?");
     }
 
     @Override
