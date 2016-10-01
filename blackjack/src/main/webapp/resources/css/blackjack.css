@@ -55,6 +55,7 @@ body {
   padding: 5px 10px;
 }
 .game-terminal .command-input input[type="text"] {
+  outline: none;
   background-color: #333333;
   width: 650px;
   border: none;
