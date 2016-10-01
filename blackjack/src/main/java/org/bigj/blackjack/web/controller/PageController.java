@@ -28,4 +28,9 @@ public class PageController {
 		return "login";
 	}
 
+    @GetMapping("/registration")
+    public String showRegistration (ModelMap model) {
+        return "registration";
+    }
+
 }
