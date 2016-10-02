@@ -16,7 +16,7 @@
     <link href="<spring:url value="/resources/css/registration.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<c:url var="registerUrl" value="/register" />
+<c:url var="registerUrl" value="/user/register" />
 <form id="registration" action="${registerUrl}" method="POST">
     <h1>Registration</h1>
     <fieldset id="inputs">
@@ -26,6 +26,9 @@
     </fieldset>
     <c:if test="${param.exists != null}">
         User with this name already exists.
+    </c:if>
+    <c:if test="${passwordNotRepeated == true}">
+        You didn't repeat password.
     </c:if>
     <fieldset id="actions">
         <input type="submit" name="submit" id="submit" value="Sign Up">

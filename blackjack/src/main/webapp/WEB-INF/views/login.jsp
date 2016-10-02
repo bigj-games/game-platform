@@ -18,6 +18,9 @@
 <c:url var="registerUrl" value="/login" />
 <form id="login" action="${registerUrl}" method="POST">
     <h1>Log In</h1>
+    <h4 class="<c:if test="${newUserCreated == true}">visible</c:if>">
+            You successfully created new user
+    </h4>
     <fieldset id="inputs">
         <input id="username" name="username" type="text" placeholder="Username" autofocus required>
         <input id="password" name="password" type="password" placeholder="Password" required>

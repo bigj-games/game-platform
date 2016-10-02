@@ -1,6 +1,9 @@
 package org.bigj.blackjack.config;
 
 import org.bigj.blackjack.service.MessageService;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -57,5 +60,25 @@ public class BlackjackConfiguration {
         dataSource.setPassword(password);
 
         return dataSource;
+    }
+
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactory() throws URISyntaxException {
+        SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setTypeAliasesPackage("org.bigj.blackjack.domain.entity");
+        return sessionFactoryBean;
+    }
+
+    @Bean
+    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+        return new SqlSessionTemplate(sqlSessionFactory().getObject());
+    }
+
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer() {
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("org.bigj.blackjack.domain.mapper");
+        return mapperScannerConfigurer;
     }
 }

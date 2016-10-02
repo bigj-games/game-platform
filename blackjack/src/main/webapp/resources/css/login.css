@@ -27,9 +27,9 @@ body
     background-image: -ms-linear-gradient(top, #fff, #eee);
     background-image: -o-linear-gradient(top, #fff, #eee);
     background-image: linear-gradient(top, #fff, #eee);
-    height: 240px;
+    height: 260px;
     width: 400px;
-    margin: -150px 0 0 -230px;
+    margin: -160px 0 0 -230px;
     padding: 30px;
     position: absolute;
     top: 50%;
@@ -120,6 +120,17 @@ h1:before
     background-image: -o-linear-gradient(right, #777, #fff);
     background-image: linear-gradient(right, #777, #fff);
     left: 0;
+}
+
+h4 {
+    visibility: hidden;
+    text-transform: uppercase;
+    font-family: Arial, serif;
+    font-weight: normal;
+    color: #555;
+}
+#login .visible {
+    visibility: visible;
 }
 
 /*--------------------*/

@@ -1,6 +1,6 @@
 package org.bigj.blackjack.web.controller;
 
-import org.bigj.blackjack.domain.User;
+import org.bigj.blackjack.domain.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ public class PageController {
     @GetMapping("/")
     public String showWelcome(ModelMap model) {
         User user = new User();
-        user.setName("Marco Polo");
+        user.setUsername("Marco Polo");
 
         model.addAttribute("username", "Test User");
         model.addAttribute("user", user);

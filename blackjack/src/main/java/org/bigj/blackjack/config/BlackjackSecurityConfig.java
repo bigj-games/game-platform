@@ -31,6 +31,7 @@ public class BlackjackSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/resources/**").permitAll()
             .antMatchers("/registration").permitAll()
+            .antMatchers("/user/register").permitAll()
             .anyRequest().authenticated()
             .and().formLogin().loginPage("/login").permitAll()
             .and().csrf().disable()
