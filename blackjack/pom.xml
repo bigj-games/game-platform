@@ -27,6 +27,13 @@
       </dependency>
     </dependencies>
 
+    <properties>
+        <dbName>bigj</dbName>
+        <dbPassword>postgres</dbPassword>
+        <dbUsername>postgres</dbUsername>
+        <dbUrl>jdbc:postgresql://localhost:5432/${dbName}</dbUrl>
+    </properties>
+
     <build>
         <finalName>blackjack</finalName>
         <plugins>
@@ -39,6 +46,66 @@
                     <warName>blackjack</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>9.4.1211</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>${dbUrl}</url>
+                    <username>${dbPassword}</username>
+                    <password>${dbUsername}</password>
+                    <settingsKey>sensibleKey</settingsKey>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>drop-db-if-any</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <!--Сначала надо присоединиться к главной базе, опасно так делать, наверное-->
+                            <url>jdbc:postgresql://localhost:5432/postgres</url>
+                            <autocommit>true</autocommit>
+                            <sqlCommand>drop database if exists ${dbName}</sqlCommand>
+                            <onError>continue</onError>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-db</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <url>jdbc:postgresql://localhost:5432/postgres</url>
+                            <autocommit>true</autocommit>
+                            <sqlCommand>create database ${dbName};</sqlCommand>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>crate-schema-and-data</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <autocommit>true</autocommit>
+                            <srcFiles>
+                                <srcFile>${basedir}/src/main/resources/db/bigj.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
