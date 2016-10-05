@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service
+@Transactional("transactionManager")
 public class UserService {
 
     @Autowired
@@ -23,7 +24,6 @@ public class UserService {
         return userMapper.findByUsername(username);
     }
 
-    @Transactional
     public void createUser(User user) {
         userMapper.createUser(user);
         authorityMapper.createUserAuthority(user);

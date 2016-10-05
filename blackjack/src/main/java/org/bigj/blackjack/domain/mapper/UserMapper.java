@@ -4,11 +4,13 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.bigj.blackjack.domain.entity.User;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by arthan on 02.10.2016. | Project game-platform
  */
 
+@Component
 public interface UserMapper {
 
     @Select("SELECT username, password " +
