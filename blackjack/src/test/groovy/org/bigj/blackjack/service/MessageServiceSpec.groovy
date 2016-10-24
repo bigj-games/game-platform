@@ -13,7 +13,7 @@ class MessageServiceSpec extends Specification {
 
     void setup() {
         test_user = "test_user"
-        expectedMessage = "Greetings," + test_user
+        expectedMessage = "Greetings, " + test_user
     }
 
     def should_get_right_greeting_message() {
