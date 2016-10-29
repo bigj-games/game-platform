@@ -1,4 +1,4 @@
-package org.bigj.blackjack.domain;
+package org.bigj.blackjack.domain.dto;
 
 /**
  * Created by arthan on 17.09.2016. | Project game-platform

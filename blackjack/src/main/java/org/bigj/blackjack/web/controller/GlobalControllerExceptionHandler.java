@@ -1,6 +1,6 @@
 package org.bigj.blackjack.web.controller;
 
-import org.bigj.blackjack.domain.GameResponse;
+import org.bigj.blackjack.domain.dto.GameResponse;
 import org.bigj.blackjack.domain.exception.IllegalCommandException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
