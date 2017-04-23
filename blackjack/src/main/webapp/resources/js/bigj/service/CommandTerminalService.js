@@ -37,6 +37,7 @@ define([
                     timeout: 5000,
                     handleAs: "json"
                 }).then(res => {
+                    // Display the data sent from the server
                     topic.publish(topics.TERMINAL_UNBLOCK);
                     topic.publish(topics.TERMINAL_PRINT, {
                         command: command, 
